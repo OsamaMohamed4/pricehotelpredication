@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Cancellation Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-color: #f2f2f2; font-family: 'Roboto', sans-serif;">
+    <div class="navbar">
+        <h1 style="margin: 0; padding: 10px; color: #fff;">Hotel Booking Cancellation Prediction</h1>
+        <!-- Add navigation links if needed -->
+    </div>
+    <div class="grid-container">
+        <div class="card">
+            <h2>Booking Details</h2>
+            <form action="/predict" method="post">
+                <label for="lead_time">Lead Time:</label>
+                <input type="number" id="lead_time" name="lead_time" required><br>
+                
+                <label for="avg_price">Average Price:</label>
+                <input type="number" id="avg_price" name="avg_price" step="0.01" required><br>
+                
+                <label for="special_requests">Special Requests:</label>
+                <input type="number" id="special_requests" name="special_requests" required><br>
+                
+                <label for="day_of_week">Day_of_week:</label>
+                <input type="number" id="day_of_week" name="day_of_week" required><br>
+                
+                <label for="month">Month:</label>
+                <input type="number" id="month" name="month" required><br>
+                
+                <label for="total_nights">Total Nights:</label>
+                <input type="number" id="total_nights" name="total_nights" required><br> 
+
+                <input type="submit" value="Predict" class="button">
+            </form>
+            {% if prediction_result %}
+                <h3>Prediction Result: {{ prediction_result }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
